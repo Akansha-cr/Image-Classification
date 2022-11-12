@@ -12,3 +12,4 @@ joblib
 fastai==2.6
 fastai2==0.0.30
 fastcore
+pydrive
