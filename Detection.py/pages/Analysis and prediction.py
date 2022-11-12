@@ -30,6 +30,9 @@ st.markdown("___________________________________________________________________
 st.image('asset/image1.png')
 
 #model
+csv_path = "HAM10000_metadata.csv"
+skin_df = pd.read_csv(csv_path)
+
 path = Path('https://drive.google.com/drive/folders/1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link')
 Path.BASE_PATH = path
 
