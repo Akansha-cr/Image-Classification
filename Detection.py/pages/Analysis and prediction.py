@@ -29,60 +29,6 @@ st.markdown(title_temp, unsafe_allow_html= True)
 st.markdown("______________________________________________________________________________________________________________")
 st.image('asset/image1.png')
 
-#model
-csv_path = "HAM10000_metadata.csv"
-skin_df = pd.read_csv(csv_path)
-
-
-short_to_full_name_dict = {
-    "akiec" : "Bowen's disease", # very early form of skin cancer 
-    "bcc" : "basal cell carcinoma" , # basal-cell cancer or white skin cancer
-    "bkl" : "benign keratosis-like lesions", # non-cancerous skin tumour
-    "df" : "dermatofibroma", # non-cancerous rounded bumps 
-    "mel" : "melanoma", # black skin cancer
-    "nv" : "melanocytic nevi", # mole non-cancerous
-    "vasc" : "vascular lesions", # skin condition
-}
-
-# returns only dx and image id column
-img_to_class_dict = skin_df.loc[:, ["image_id", "dx"]] 
-# returns columns as lists in a dict
-img_to_class_dict = img_to_class_dict.to_dict('list')  
-# returns a dict mapping image id to disease name
-img_to_class_dict = {img_id : short_to_full_name_dict[disease] for img_id,disease in zip(img_to_class_dict['image_id'], img_to_class_dict['dx']) } 
-
-# path.stem returns the filename without suffix
-def get_label_from_dict(csv_path):
-    return img_to_class_dict[csv_path.stem] 
-
-from fastai.vision.data import *
-dblock = DataBlock(
-    # Designation the independent and dependent variables
-    blocks = (ImageBlock, CategoryBlock), 
-    # To get a list of those files,and returns a list of all of the images in that path
-    get_items = get_image_files, 
-    # Split our training and validation sets randomly
-    splitter = RandomSplitter(valid_pct=0.2, seed=42),
-    # We are telling fastai what function to call to create the labels in our dataset, in our case is independet variable
-    get_y = get_label_from_dict,
-    # DihedralItem all 4 90 deg roatations and for each: 
-    #2 horizonntal flips -> 8 orientations
-    item_tfms=[Resize(448), DihedralItem()],
-    # Picks a random scaled crop of an image and resize it to size
-    batch_tfms=RandomResizedCrop(size=224, min_scale=0.75, max_scale=1.0))
-
-img_path = 'Data/samples/'
-# create dataloader using img_path   
-dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
-sample = dls.show_batch(max_n=15)
-st.markdown(sample)
-#training the model with the help of DATA
-
-#resnet = vision_learner(dls,    
-  #                  resnet18,
- #                   metrics=accuracy)
-#resnet.fine_tune(1)
-#resnet.eval()
 
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
