@@ -33,6 +33,10 @@ st.image('asset/image1.png')
 csv_path = "HAM10000_metadata.csv"
 skin_df = pd.read_csv(csv_path)
 
+path = Path('HAM10000_metadata.csv')
+Path.BASE_PATH = path
+path.ls()
+
 short_to_full_name_dict = {
     "akiec" : "Bowen's disease", # very early form of skin cancer 
     "bcc" : "basal cell carcinoma" , # basal-cell cancer or white skin cancer
@@ -70,7 +74,7 @@ dblock = DataBlock(
     # Picks a random scaled crop of an image and resize it to size
     batch_tfms=RandomResizedCrop(size=224, min_scale=0.75, max_scale=1.0))
 
-img_path = 'Data/samples'
+img_path = 'Data/samples/'
 # create dataloader using img_path   
 dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
 sample = dls.show_batch(max_n=15)
@@ -107,7 +111,7 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet34(dls, pretrained=True)
+	resnet = models.resnet34(dls, pretrained=False)
 	resnet.eval()
 	out = resnet(batch_img_tensor)
 	with open('HAM10000_metadata.csv') as f:
