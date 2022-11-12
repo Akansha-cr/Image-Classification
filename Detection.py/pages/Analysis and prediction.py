@@ -73,7 +73,7 @@ dblock = DataBlock(
 img_path = 'Data'
 # create dataloader using img_path   
 dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
-dls.dataloaders.show_batch(max_n=15)
+dls.show_batch(max_n=15)
 
 resnet = vision_learner(dls,
                     resnet18,
