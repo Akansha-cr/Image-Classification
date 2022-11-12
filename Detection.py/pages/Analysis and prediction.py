@@ -26,6 +26,7 @@ title_temp ="""
 	</div>
 	"""
 st.markdown(title_temp, unsafe_allow_html= True)
+st.markdown("______________________________________________________________________________________________________________")
 st.image('asset/image1.png')
 
 #file uploader
