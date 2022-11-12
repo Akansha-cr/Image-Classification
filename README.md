@@ -4,4 +4,4 @@ SKIN CANCER DETECTION PROJECT
 
 -- The Dataset used here is-Skin Cancer MNIST: HAM10000 (https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000)
 
--- Web app will be active at https://skin-cancer-lesion-detection.streamlitapp.com
+-- Web app will be active at https://lesion-detection.streamlit.app/
