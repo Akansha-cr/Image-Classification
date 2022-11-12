@@ -32,10 +32,14 @@ st.image('asset/image1.png')
 #model
 csv_path = "HAM10000_metadata.csv"
 skin_df = pd.read_csv(csv_path)
+   
+from pydrive.auth import GoogleAuth
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()
+drive = GoogleDrive(gauth)
 
-path = Path('https://drive.google.com//drive//folders//1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link')
-Path.BASE_PATH = path
-path.ls()
+file_obj = drive.CreateFile({'id': '1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz'})
+file_obj.GetContentFile('Csv&Data') 
 
 short_to_full_name_dict = {
     "akiec" : "Bowen's disease", # very early form of skin cancer 
