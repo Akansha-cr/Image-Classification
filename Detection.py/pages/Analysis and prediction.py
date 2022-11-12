@@ -76,7 +76,9 @@ img_path = 'Data/samples/'
 dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
 sample = dls.show_batch(max_n=15)
 st.markdown(sample)
-#resnet = vision_learner(dls,
+#training the model with the help of DATA
+
+#resnet = vision_learner(dls,    
   #                  resnet18,
  #                   metrics=accuracy)
 #resnet.fine_tune(1)
@@ -108,7 +110,7 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet34(dls, pretrained=False)
+	resnet = models.resnet34(pretrained=True)
 	resnet.eval()
 	out = resnet(batch_img_tensor)
 	with open('HAM10000_metadata.csv') as f:
