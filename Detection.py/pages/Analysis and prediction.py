@@ -33,9 +33,6 @@ st.image('asset/image1.png')
 csv_path = "HAM10000_metadata.csv"
 skin_df = pd.read_csv(csv_path)
 
-path = Path('HAM10000_metadata.csv')
-Path.BASE_PATH = path
-path.ls()
 
 short_to_full_name_dict = {
     "akiec" : "Bowen's disease", # very early form of skin cancer 
@@ -55,7 +52,7 @@ img_to_class_dict = img_to_class_dict.to_dict('list')
 img_to_class_dict = {img_id : short_to_full_name_dict[disease] for img_id,disease in zip(img_to_class_dict['image_id'], img_to_class_dict['dx']) } 
 
 # path.stem returns the filename without suffix
-def get_label_from_dict(path):
+def get_label_from_dict(csv_path):
     return img_to_class_dict[path.stem] 
 
 from fastai.vision.data import *
