@@ -110,10 +110,10 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet34(pretrained=True)
+	resnet = models.resnet50(pretrained=True)
 	resnet.eval()
 	out = resnet(batch_img_tensor)
-	with open('HAM10000_metadata.csv') as f:
+	with open('ISIC2018_Task3_Test_Nature.csv') as f:
 		labels = [line.strip() for line in f.readlines()]
 	_, index = torch.max(out, 1)
 	percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
