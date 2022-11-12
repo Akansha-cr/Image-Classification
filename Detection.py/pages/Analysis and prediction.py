@@ -73,14 +73,14 @@ dblock = DataBlock(
 img_path = 'Data'
 # create dataloader using img_path   
 dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
-dls.show_batch(max_n=15)
+sample = dls.show_batch(max_n=15)
+st.markdown(sample)
+#resnet = vision_learner(dls,
+  #                  resnet18,
+ #                   metrics=accuracy)
+#resnet.fine_tune(1)
+#resnet.eval()
 
-'''resnet = vision_learner(dls,
-                    resnet18,
-                    metrics=accuracy)
-resnet.fine_tune(1)
-resnet.eval()
-'''
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
 image_file = st.file_uploader("Analysis and Prediction")
@@ -107,16 +107,16 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	#resnet = models.resnet34(pretrained=True)
-	#resnet.eval()
+	resnet = models.resnet34(dls, pretrained=True)
+	resnet.eval()
 	out = resnet(batch_img_tensor)
-	"""with open('ISIC2018_Task3_Test_Nature.csv') as f:
+	with open('HAM10000_metadata.csv') as f:
 		labels = [line.strip() for line in f.readlines()]
 	_, index = torch.max(out, 1)
 	percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
 	print(labels[index[0]], percentage[index[0]].item())
 	_, indices = torch.sort(out, descending=True)
-	[(labels[idx], percentage[idx].item()) for idx in indices[0][:5]]"""
+	[(labels[idx], percentage[idx].item()) for idx in indices[0][:5]]
 
 
 	
