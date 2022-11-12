@@ -75,8 +75,8 @@ dblock = DataBlock(
 
 img_path = 'https://drive.google.com//drive//folders//1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link'
 # create dataloader using img_path   
-dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
-dls.show_batch(max_n=15)
+dblock.dataloaders(img_path, bs=64) # bs = batch size
+dblock.dataloaders.show_batch(max_n=15)
 
 resnet = vision_learner(dls,
                     resnet18,
