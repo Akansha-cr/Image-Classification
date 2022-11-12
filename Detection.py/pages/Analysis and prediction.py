@@ -110,7 +110,7 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet50(pretrained=True)
+	resnet = models.resnet34(pretrained=True)
 	resnet.eval()
 	out = resnet(batch_img_tensor)
 	with open('ISIC2018_Task3_Test_Nature.csv') as f:
