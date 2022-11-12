@@ -26,6 +26,7 @@ title_temp ="""
 	</div>
 	"""
 st.markdown(title_temp, unsafe_allow_html= True)
+st.image('asset/image1.png')
 
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
