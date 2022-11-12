@@ -35,6 +35,7 @@ skin_df = pd.read_csv(csv_path)
 
 path = Path('https://drive.google.com//drive//folders//1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link')
 Path.BASE_PATH = path
+path.ls()
 
 short_to_full_name_dict = {
     "akiec" : "Bowen's disease", # very early form of skin cancer 
