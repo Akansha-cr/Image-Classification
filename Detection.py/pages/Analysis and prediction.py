@@ -65,7 +65,7 @@ if submit:
 	percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
 	print(labels[index[0]], percentage[index[0]].item())
 	_, indices = torch.sort(out, descending=True)
-	[(labels[idx], percentage[idx].item()) for idx in indices[0][:5]]
+	[(labels[idx], percentage[idx].item()) for idx in indices[0][:4]]
 
 
 	
