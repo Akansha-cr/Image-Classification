@@ -78,7 +78,7 @@ dls.show_batch(max_n=15)
 resnet = vision_learner(dls,
                     resnet18,
                     metrics=accuracy)
-resnet.fine_tune(4)
+resnet.fine_tune(1)
 resnet.eval()
 
 #file uploader
