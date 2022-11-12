@@ -73,7 +73,7 @@ dblock = DataBlock(
     # Picks a random scaled crop of an image and resize it to size
     batch_tfms=RandomResizedCrop(size=224, min_scale=0.75, max_scale=1.0))
 
-img_path = 'https://drive.google.com//drive//folders//1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link'
+img_path = path
 # create dataloader using img_path   
 dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
 
