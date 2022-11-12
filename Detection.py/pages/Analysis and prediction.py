@@ -53,7 +53,7 @@ img_to_class_dict = {img_id : short_to_full_name_dict[disease] for img_id,diseas
 
 # path.stem returns the filename without suffix
 def get_label_from_dict(csv_path):
-    return img_to_class_dict[path.stem] 
+    return img_to_class_dict[csv_path.stem] 
 
 from fastai.vision.data import *
 dblock = DataBlock(
