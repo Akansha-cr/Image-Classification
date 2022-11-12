@@ -29,6 +29,57 @@ st.markdown(title_temp, unsafe_allow_html= True)
 st.markdown("______________________________________________________________________________________________________________")
 st.image('asset/image1.png')
 
+#model
+path = Path('https://drive.google.com/drive/folders/1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link')
+Path.BASE_PATH = path
+
+short_to_full_name_dict = {
+    "akiec" : "Bowen's disease", # very early form of skin cancer 
+    "bcc" : "basal cell carcinoma" , # basal-cell cancer or white skin cancer
+    "bkl" : "benign keratosis-like lesions", # non-cancerous skin tumour
+    "df" : "dermatofibroma", # non-cancerous rounded bumps 
+    "mel" : "melanoma", # black skin cancer
+    "nv" : "melanocytic nevi", # mole non-cancerous
+    "vasc" : "vascular lesions", # skin condition
+}
+
+# returns only dx and image id column
+img_to_class_dict = skin_df.loc[:, ["image_id", "dx"]] 
+# returns columns as lists in a dict
+img_to_class_dict = img_to_class_dict.to_dict('list')  
+# returns a dict mapping image id to disease name
+img_to_class_dict = {img_id : short_to_full_name_dict[disease] for img_id,disease in zip(img_to_class_dict['image_id'], img_to_class_dict['dx']) } 
+
+# path.stem returns the filename without suffix
+def get_label_from_dict(path):
+    return img_to_class_dict[path.stem] 
+
+from fastai.vision.data import *
+dblock = DataBlock(
+    # Designation the independent and dependent variables
+    blocks = (ImageBlock, CategoryBlock), 
+    # To get a list of those files,and returns a list of all of the images in that path
+    get_items = get_image_files, 
+    # Split our training and validation sets randomly
+    splitter = RandomSplitter(valid_pct=0.2, seed=42),
+    # We are telling fastai what function to call to create the labels in our dataset, in our case is independet variable
+    get_y = get_label_from_dict,
+    # DihedralItem all 4 90 deg roatations and for each: 
+    #2 horizonntal flips -> 8 orientations
+    item_tfms=[Resize(448), DihedralItem()],
+    # Picks a random scaled crop of an image and resize it to size
+    batch_tfms=RandomResizedCrop(size=224, min_scale=0.75, max_scale=1.0))
+
+img_path = 'https://drive.google.com/drive/folders/1l2yBu02uz-qi17Tp4XzhtbSWhd51fUXz?usp=share_link'
+# create dataloader using img_path   
+dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
+
+resnet = vision_learner(dls,
+                    resnet18,
+                    metrics=accuracy)
+resnet.fine_tune(4)
+resnet.eval()
+
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
 image_file = st.file_uploader("Analysis and Prediction")
@@ -55,16 +106,16 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet34(pretrained=True)
-	resnet.eval()
+	#resnet = models.resnet34(pretrained=True)
+	#resnet.eval()
 	out = resnet(batch_img_tensor)
-	with open('ISIC2018_Task3_Test_Nature.csv') as f:
+	"""with open('ISIC2018_Task3_Test_Nature.csv') as f:
 		labels = [line.strip() for line in f.readlines()]
 	_, index = torch.max(out, 1)
 	percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
 	print(labels[index[0]], percentage[index[0]].item())
 	_, indices = torch.sort(out, descending=True)
-	[(labels[idx], percentage[idx].item()) for idx in indices[0][:5]]
+	[(labels[idx], percentage[idx].item()) for idx in indices[0][:5]]"""
 
 
 	
