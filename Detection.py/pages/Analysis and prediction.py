@@ -75,12 +75,12 @@ img_path = 'Data'
 dls = dblock.dataloaders(img_path, bs=64) # bs = batch size
 dls.show_batch(max_n=15)
 
-resnet = vision_learner(dls,
+'''resnet = vision_learner(dls,
                     resnet18,
                     metrics=accuracy)
 resnet.fine_tune(1)
 resnet.eval()
-
+'''
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
 image_file = st.file_uploader("Analysis and Prediction")
