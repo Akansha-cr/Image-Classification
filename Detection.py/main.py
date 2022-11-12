@@ -83,7 +83,7 @@ elif choice == 'Login':
 	login = st.button('Login')
 	if login:
 		user = auth.sign_in_with_email_and_password(email,password)
-		st.write(f'<h1 style="color:purple;font-size:30px;">{"Upload an sample/Image"}</h1>',  unsafe_allow_html=True)
+		st.write(f'<h1 style="color:purple;font-size:30px;">{"Please head over to Analysis and Prediction page for Prediction."}</h1>',  unsafe_allow_html=True)
 		st.write(f'<h1 style="color:white;font-size:15px;">{"This block is not functional yet, please try again later..."}</h1>',  unsafe_allow_html=True)
 		
 	
