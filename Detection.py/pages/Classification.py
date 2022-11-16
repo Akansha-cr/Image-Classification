@@ -9,8 +9,7 @@ import numpy as np
 
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
-st.markdown(f'<h1 style="color:white;font-size:15px;">{"To Predict something else click on submit, ex- snails, cats etc"}</h1>',  unsafe_allow_html=True)
-image_file = st.file_uploader("Analysis and Prediction")
+image_file = st.file_uploader("Classify images by uploading them here")
 
 #prediction
 if image_file is not None:
