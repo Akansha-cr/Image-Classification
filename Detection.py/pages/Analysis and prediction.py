@@ -16,6 +16,11 @@ from fastai.vision.data import *
 import torch
 from torchvision import models
 from torchvision import transforms
+from tensorflow.keras.applications.vgg16 import VGG16
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.vgg16 import preprocess_input
+import numpy as np
+
 
 device = torch.device("cuda")
 
@@ -67,7 +72,15 @@ if submit:
 	_, indices = torch.sort(out, descending=True)
 	[(labels[idx], percentage[idx].item()) for idx in indices[0][:4]]
 
-
+prediction= st.button("submit")
+if prediction:
+	model = VGG16(weights='imagenet', include_top=False)
+	img = image.load_img(imgage_file, target_size=(224, 224))
+	x = image.img_to_array(img)
+	x = np.expand_dims(x, axis=0)
+	x = preprocess_input(x)
+	features = model.predict(x)
+	
 	
 #Background image
 def add_bg_from_local(image_file):
