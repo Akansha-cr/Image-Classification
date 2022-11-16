@@ -62,7 +62,7 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet34(pretrained=True)
+	resnet = models.resnet34(weights='imagenet', pretrained=True)
 	resnet.eval()
 	out = resnet(batch_img_tensor)
 	with open('HAM10000_metadata.csv') as f:
@@ -73,15 +73,6 @@ if submit:
 	_, indices = torch.sort(out, descending=True)
 	[(labels[idx], percentage[idx].item()) for idx in indices[0][:4]]
 
-prediction= st.button("submit")
-if prediction:
-	model = VGG16(weights='imagenet', include_top=False)
-	img = image.load_img(image_file, target_size=(224, 224))
-	x = image.img_to_array(img)
-	x = np.expand_dims(x, axis=0)
-	x = preprocess_input(x)
-	pred = model.predict(x)
-	print('Predicted:', decode_predictions(pred, top=3)[0])
 	
 #Background image
 def add_bg_from_local(image_file):
