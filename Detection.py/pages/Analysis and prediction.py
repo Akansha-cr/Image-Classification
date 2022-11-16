@@ -81,7 +81,7 @@ if prediction:
 	x = np.expand_dims(x, axis=0)
 	x = preprocess_input(x)
 	preds = model.predict(x)
-	pred1= print('Predicted:', decode_predictions(preds, top=3)[0])
+	pred1= (decode_predictions(preds, top=3)[0])
 	st.markdown(pred1)
 	
 #Background image
