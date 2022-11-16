@@ -82,7 +82,7 @@ if prediction:
 	x = preprocess_input(x)
 	preds = model.predict(x)
 	pred1= print('Predicted:', decode_predictions(preds, top=3)[0])
-	st.markdown(preds1)
+	st.markdown(pred1)
 	
 #Background image
 def add_bg_from_local(image_file):
