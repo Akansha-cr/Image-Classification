@@ -9,6 +9,7 @@ import numpy as np
 
 #file uploader
 st.markdown(f'<h1 style="color:white;font-size:20px;">{"Please upload a file"}</h1>',  unsafe_allow_html=True)
+st.markdown(f'<h1 style="color:white;font-size:15px;">{"To Predict something else click on submit, ex- snails, cats etc"}</h1>',  unsafe_allow_html=True)
 image_file = st.file_uploader("Analysis and Prediction")
 
 #prediction
@@ -17,7 +18,6 @@ if image_file is not None:
 	st.write(file_details)
 	st.image(image_file)
     
-st.markdown(f'<h1 style="color:white;font-size:15px;">{"To Predict something else click on submit, ex- snails, cats etc"}</h1>',  unsafe_allow_html=True)
 prediction = st.button("SUBMIT")
 if prediction:
 	model = ResNet50(weights='imagenet')
@@ -31,9 +31,6 @@ if prediction:
 	st.markdown(pred1)
     
    
-header=st.container()
-with header:
-    st.write(f'<h1 style="color:white;font-size:35px;">{"Analysis and preprocessing for detection of skin cancer. Coming Soon!"}</h1>', unsafe_allow_html=True)
 def add_bg_from_local(image_file):
     with open(image_file, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
