@@ -44,7 +44,7 @@ st.markdown(title_temp, unsafe_allow_html= True)
 col1,col2= st.columns(2)
 with col1:
 	st.write(f'<h1 style="color:purple;font-size:35px;">{"Lesion Detection"}</h1>', unsafe_allow_html=True)
-	st.markdown(f'<h1 style="color:white;font-size:20px;">{"This website is Dedicated to Detect different types of skin cancer. Please signup or Simply head over to the Analysis and Prediction page to upload an Image and proceed further."}</h1>', unsafe_allow_html=True)
+	st.markdown(f'<h1 style="color:white;font-size:20px;">{"This website is Dedicated to Detect different types of skin cancer. Please signup or Simply head over to the Analysis and Prediction page to upload an Image and proceed further. You also also classify different images by going on the classification page."}</h1>', unsafe_allow_html=True)
 with col2:
 	st.image('asset/Site Stats-amico.png')
 	
