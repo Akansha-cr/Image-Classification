@@ -16,11 +16,6 @@ from fastai.vision.data import *
 import torch
 from torchvision import models
 from torchvision import transforms
-from tensorflow.keras.applications.resnet50 import ResNet50
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
-import numpy as np
-
 
 device = torch.device("cuda")
 
@@ -72,18 +67,6 @@ if submit:
 	_, indices = torch.sort(out, descending=True)
 	[(labels[idx], percentage[idx].item()) for idx in indices[0][:4]]
 	
-st.markdown(f'<h1 style="color:white;font-size:15px;">{"To Predict something else click on submit, ex- snails, cats etc"}</h1>',  unsafe_allow_html=True)
-prediction = st.button("submit")
-if prediction:
-	model = ResNet50(weights='imagenet')
-	Image.open(image_file).convert('RGB')
-	img = image.load_img(image_file, target_size=(224, 224))
-	x = image.img_to_array(img)
-	x = np.expand_dims(x, axis=0)
-	x = preprocess_input(x)
-	preds = model.predict(x)
-	pred1= (decode_predictions(preds, top=3)[0])
-	st.markdown(pred1)
 	
 #Background image
 def add_bg_from_local(image_file):
