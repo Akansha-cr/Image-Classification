@@ -16,12 +16,6 @@ from fastai.vision.data import *
 import torch
 from torchvision import models
 from torchvision import transforms
-from tensorflow.keras.applications.vgg16 import VGG16
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.vgg16 import preprocess_input
-import numpy as np
-from tensorflow.keras.applications.resnet50 import ResNet50
-from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 
 device = torch.device("cuda")
 
@@ -62,7 +56,7 @@ if submit:
 		)])
 	img_preprocessed = preprocess(img)
 	batch_img_tensor = torch.unsqueeze(img_preprocessed, 0)
-	resnet = models.resnet34(weights='imagenet', pretrained=True)
+	resnet = models.resnet34(pretrained=True)
 	resnet.eval()
 	out = resnet(batch_img_tensor)
 	with open('HAM10000_metadata.csv') as f:
