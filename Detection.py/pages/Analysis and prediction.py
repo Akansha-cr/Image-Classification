@@ -71,7 +71,8 @@ if submit:
 	print(labels[index[0]], percentage[index[0]].item())
 	_, indices = torch.sort(out, descending=True)
 	[(labels[idx], percentage[idx].item()) for idx in indices[0][:4]]
-
+	
+st.markdown(f'<h1 style="color:white;font-size:15px;">{"To Predict something else click on submit, ex- snails, cats etc"}</h1>',  unsafe_allow_html=True)
 prediction = st.button("submit")
 if prediction:
 	model = ResNet50(weights='imagenet')
