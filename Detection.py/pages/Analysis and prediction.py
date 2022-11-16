@@ -79,8 +79,8 @@ if prediction:
 	x = image.img_to_array(img)
 	x = np.expand_dims(x, axis=0)
 	x = preprocess_input(x)
-	features = model.predict(x)
-	print('Predicted:', decode_predictions(features, top=3)[0])
+	pred = model.predict(x)
+	print('Predicted:', decode_predictions(pred, top=3)[0])
 	
 #Background image
 def add_bg_from_local(image_file):
