@@ -8,4 +8,4 @@ Also it has Image Classification project on the classification pages of the web 
 -- Web app will be active at https://lesion-detection.streamlit.app/
 IMAGE CLASSIFICATION--
 To classify different images--
-![alt text]('https://drive.google.com/file/d/1vft6LHzH8j6FV558w91rO52rGH4Qittk/view?usp=sharing')
+![]('/asset/ss.png')
