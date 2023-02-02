@@ -11,3 +11,4 @@ Also it has Image Classification project on the classification pages of the web 
 To classify different images--
 
 ![Alt text](https://drive.google.com/file/d/1vft6LHzH8j6FV558w91rO52rGH4Qittk/view?usp=sharing)
+![ss](https://user-images.githubusercontent.com/73830381/216281216-aab5df4b-c5b0-4845-a9c4-6df5730de602.png)
