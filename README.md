@@ -6,4 +6,4 @@ SKIN CANCER DETECTION PROJECT
 Also it has Image Classification project on the classification pages of the web app to classify any image with imagenet.
 
 -- Web app will be active at https://lesion-detection.streamlit.app/
-![alt text](https://Akansha-cr/HAM10000-Detection/asset/main/ss.png)
+![alt text]('asset/ss.png')
