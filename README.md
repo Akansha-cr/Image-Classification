@@ -10,4 +10,4 @@ Also it has Image Classification project on the classification pages of the web 
 --IMAGE CLASSIFICATION--
 To classify different images--
 
-![]('asset/ss.png')
+![Alt text](http://full/path/to/img.jpg](https://drive.google.com/file/d/1vft6LHzH8j6FV558w91rO52rGH4Qittk/view?usp=sharing)
