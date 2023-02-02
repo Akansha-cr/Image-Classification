@@ -6,6 +6,7 @@ SKIN CANCER DETECTION PROJECT--
 Also it has Image Classification project on the classification pages of the web app to classify any image with imagenet.
 
 -- Web app will be active at https://lesion-detection.streamlit.app/
-IMAGE CLASSIFICATION--
+
+--IMAGE CLASSIFICATION--
 To classify different images--
-![]('/asset/ss.png')
+![]('asset/ss.png')
