@@ -9,4 +9,5 @@ Also it has Image Classification project on the classification pages of the web 
 
 --IMAGE CLASSIFICATION--
 To classify different images--
+
 ![]('asset/ss.png')
