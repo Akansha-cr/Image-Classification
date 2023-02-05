@@ -1,4 +1,4 @@
-# HAM10000-Detection
+# HAM10000-Detection// Image classification
 SKIN CANCER DETECTION PROJECT--
 -- This project aims to detect different types of skin cancer using tensorflow other Deep Learning Techniques. -- This repo is currently under development -- The Frontend for this project will be Streamlit.
 
