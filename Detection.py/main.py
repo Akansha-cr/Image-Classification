@@ -1,4 +1,4 @@
-from pyrebase import pyrebase
+import pyrebase
 import streamlit as st
 from datetime import datetime
 import streamlit.components.v1 as html
