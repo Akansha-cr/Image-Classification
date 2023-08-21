@@ -1,5 +1,5 @@
 import streamlit as st
-
+import base64
 # Custom CSS styling
 st.markdown(
     """
