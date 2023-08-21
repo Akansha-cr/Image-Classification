@@ -1,11 +1,6 @@
-Pyrebase4==4.5.0
 pandas
 streamlit
-google-cloud-firestore
 requests
-oauth2client
-python-jwt
-pycrypto
 keras
 tensorflow
 joblib
