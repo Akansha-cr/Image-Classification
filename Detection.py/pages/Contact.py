@@ -1,25 +1,59 @@
 import streamlit as st
-import streamlit.components.v1 as html
-from PIL import Image
-import base64
-header=st.container()
-with header:
-    st.write(f'<h1 style="color:white;font-size:25px;">{"About and Contact.."}</h1>', unsafe_allow_html=True)
-def add_bg_from_local(image_file):
-    with open(image_file, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read())
-    st.markdown(
-    f"""
+import time
+
+# Custom CSS for loading screen
+st.markdown(
+    """
     <style>
-    .stApp {{
-        background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
-        background-size: cover
-    }}
+    .loading-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        color: #333;
+    }
+    .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
     </style>
     """,
     unsafe_allow_html=True
-    )
-add_bg_from_local('asset/—Pngtree—abstract background gaming futuristic banner_1235846.jpg')
-#form
-st.write(f'<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe5cb9DhQxHWm5GwSYlHx1vVAcOkRbtEgCS-h20k9vG8Wefeg/viewform?embedded=true" width="640" height="948" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>', unsafe_allow_html= True)
+)
 
+# Show loading screen
+st.markdown('<div class="loading-overlay"><div class="spinner"></div>Loading...</div>', unsafe_allow_html=True)
+
+# Simulate a long process
+time.sleep(3)
+
+# Hide loading screen after the process is done
+st.markdown(
+    """
+    <style>
+    .loading-overlay {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Your main app content goes here
+st.title("Welcome to the Image Classification App")
+st.write("This is the main content of the app.")
